@@ -1,0 +1,11 @@
+node_modules/
+lib/
+*.tgz
+.DS_Store
+.env
+.env.*
+src/phonemizer/generated/cephonemizer-runtime.js
+examples/*/dist/
+examples/*/public/onnxruntime/
+examples/*/*.tsbuildinfo
+examples/*/.cache/

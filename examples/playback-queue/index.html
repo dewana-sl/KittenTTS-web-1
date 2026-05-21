@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KittenTTS Playback Queue Example</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="queue-demo">
+        <header class="hero">
+          <img class="brand-logo" src="../html/assets/kittenml_logo.svg" alt="KittenML" />
+          <div>
+            <h1>KittenTTS Example</h1>
+            <p>Playback queue example of the Web SDK for KittenTTS</p>
+          </div>
+        </header>
+
+        <section class="demo-panel" aria-label="Playback queue controls">
+          <div class="select-grid">
+            <label>
+              <span class="label-heading">
+                Model
+                <span id="cache-status" class="cache-pill">Checking cache</span>
+              </span>
+              <select id="model-select"></select>
+            </label>
+            <label>
+              Voice
+              <select id="voice-select"></select>
+            </label>
+            <label>
+              Speed
+              <select id="speed-select">
+                <option value="0.75">0.75x</option>
+                <option value="1" selected>1.00x</option>
+                <option value="1.25">1.25x</option>
+                <option value="1.5">1.50x</option>
+              </select>
+            </label>
+          </div>
+
+          <section class="status-strip" aria-live="polite">
+            <span id="status">Idle</span>
+            <span id="progress-label">0%</span>
+            <span class="progress-meter" aria-hidden="true">
+              <span id="progress-fill"></span>
+            </span>
+          </section>
+
+          <div class="queue-list">
+            <label>
+              Clip 1
+              <textarea id="clip-1">Welcome to the playback queue example.</textarea>
+            </label>
+            <label>
+              Clip 2
+              <textarea id="clip-2">Each clip waits for the earlier one to finish.</textarea>
+            </label>
+            <label>
+              Clip 3
+              <textarea id="clip-3">This makes serial playback simple in reader and assistant apps.</textarea>
+            </label>
+          </div>
+
+          <div class="action-row">
+            <button id="queue-button" type="button">Queue clips</button>
+            <button id="stop-button" class="secondary-button" type="button" disabled>Stop queue</button>
+          </div>
+
+          <section class="queue-state" aria-label="Queue state">
+            <div>
+              <strong id="pending-count">0</strong>
+              <span>Pending</span>
+            </div>
+            <div>
+              <strong id="playing-state">No</strong>
+              <span>Playing</span>
+            </div>
+            <div>
+              <strong id="completed-count">0</strong>
+              <span>Completed</span>
+            </div>
+          </section>
+
+          <section id="busy-panel" class="busy-panel" role="status" aria-live="polite">
+            <span class="spinner" aria-hidden="true"></span>
+            <span id="busy-label">Working</span>
+          </section>
+
+          <ol id="queue-log" class="queue-log" aria-label="Queue log"></ol>
+
+          <p class="demo-disclaimer">
+            This system is for demonstration purposes only and is not intended
+            to process sensitive or personal data. No text is sent to a TTS
+            service after local model assets are available.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <script defer src="../html/assets/kittentts-web.js"></script>
+    <script defer src="./app.js"></script>
+  </body>
+</html>
