@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KittenTTS Express Example</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="voice-demo">
+        <header class="hero">
+          <img class="brand-logo" src="/kittenml_logo.svg" alt="KittenML" />
+          <div>
+            <h1>KittenTTS Example</h1>
+            <p>Express example of the Node SDK for KittenTTS</p>
+          </div>
+        </header>
+
+        <section class="demo-panel" aria-label="Server voice controls">
+          <div class="model-row">
+            <span class="model-label">
+              Model
+              <span id="cache" class="cache-pill">Checking</span>
+            </span>
+            <span class="model-name">Nano (int8)</span>
+          </div>
+
+          <label class="editor-label">
+            Use the sample text or enter your own text in English
+            <textarea id="text">Thank you for trying KittenTTS in this Express demo. The browser sends text to the local Node server, and the server returns generated audio with word timings.</textarea>
+          </label>
+
+          <div class="playback-row">
+            <section class="speed-control">
+              <span>Adjust speed</span>
+              <div class="slider-line">
+                <strong>0.5x</strong>
+                <input id="speed" type="range" min="0.5" max="2" step="0.05" value="1" />
+                <strong>2.0x</strong>
+              </div>
+              <output id="speed-value">1.00x</output>
+            </section>
+
+            <section class="play-box">
+              <span>Play voice</span>
+              <button id="generate" type="button" aria-label="Generate and play voice">
+                <span class="play-icon" aria-hidden="true"></span>
+              </button>
+            </section>
+          </div>
+
+          <section id="busy" class="busy-panel" role="status" aria-live="polite" hidden>
+            <span class="spinner" aria-hidden="true"></span>
+            <span id="status">Generating audio on the backend</span>
+          </section>
+
+          <audio id="audio" controls></audio>
+
+          <section id="reader" class="reader">
+            Generate audio to see backend word timings.
+          </section>
+
+          <p class="demo-disclaimer">
+            This system is for demonstration purposes only and is not intended to process sensitive or personal data.
+            Text is sent to the local Express server so it can generate the demo audio.
+          </p>
+
+          <section class="result-panel">
+            <div>
+              <strong id="duration">0.00s</strong>
+              <span>Duration</span>
+            </div>
+            <div>
+              <strong id="words">0</strong>
+              <span>Word timings</span>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+{
+  "name": "@kittentts/web",
+  "version": "0.1.0",
+  "description": "On-device text-to-speech for web and Node.js, powered by KittenTTS + ONNX Runtime Web",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "assets/",
+    "lib/",
+    "docs/",
+    "examples/vite-react/index.html",
+    "examples/vite-react/package.json",
+    "examples/vite-react/package-lock.json",
+    "examples/vite-react/public/",
+    "examples/vite-react/README.md",
+    "examples/vite-react/src/",
+    "examples/vite-react/tsconfig.json",
+    "examples/vite-react/vite.config.ts",
+    "examples/html/app.js",
+    "examples/html/assets/",
+    "examples/html/index.html",
+    "examples/html/README.md",
+    "examples/html/styles.css",
+    "examples/playback-queue/app.js",
+    "examples/playback-queue/index.html",
+    "examples/playback-queue/README.md",
+    "examples/playback-queue/styles.css",
+    "examples/vite-react-word-timings/index.html",
+    "examples/vite-react-word-timings/package.json",
+    "examples/vite-react-word-timings/package-lock.json",
+    "examples/vite-react-word-timings/public/",
+    "examples/vite-react-word-timings/README.md",
+    "examples/vite-react-word-timings/src/",
+    "examples/vite-react-word-timings/tsconfig.json",
+    "examples/vite-react-word-timings/vite.config.ts",
+    "examples/node-express/package.json",
+    "examples/node-express/package-lock.json",
+    "examples/node-express/README.md",
+    "examples/node-express/server.js",
+    "examples/node-express/public/",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run build:phonemizer && npm run build:ts && node scripts/copy-generated.cjs",
+    "build:ts": "tsc -p tsconfig.json",
+    "build:phonemizer": "node scripts/build-cephonemizer.cjs",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm test",
+    "publish:npm": "npm publish --access public",
+    "test": "npm run build:test && node --test tests/*.test.cjs",
+    "build:test": "npm run build:phonemizer && tsc -p tsconfig.json && node scripts/copy-generated.cjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "npm run typecheck",
+    "example:html": "python3 -m http.server 5173 --directory examples/html",
+    "example:queue": "python3 -m http.server 5175 --directory examples",
+    "example:vite": "npm --prefix examples/vite-react run dev",
+    "example:word-timings": "npm --prefix examples/vite-react-word-timings run dev",
+    "example:express": "npm --prefix examples/node-express start"
+  },
+  "keywords": [
+    "tts",
+    "text-to-speech",
+    "speech-synthesis",
+    "on-device",
+    "onnx",
+    "onnxruntime-web",
+    "kitten",
+    "ai",
+    "ml",
+    "web"
+  ],
+  "author": "KittenML",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KittenML/KittenTTS-web"
+  },
+  "homepage": "https://github.com/KittenML/KittenTTS-web#readme",
+  "bugs": {
+    "url": "https://github.com/KittenML/KittenTTS-web/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "onnxruntime-web": "^1.24.3",
+    "pako": "^2.1.0",
+    "wasm-media-encoders": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "@types/pako": "^2.0.3",
+    "typescript": "^5.8.3"
+  }
+}

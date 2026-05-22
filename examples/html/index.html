@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KittenTTS Example</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="voice-demo">
+        <header class="hero">
+          <img class="brand-logo" src="./assets/kittenml_logo.svg" alt="KittenML" />
+          <div>
+            <h1>KittenTTS Example</h1>
+            <p>HTML example of the Web SDK for KittenTTS</p>
+          </div>
+        </header>
+
+        <div class="content-grid">
+          <section class="demo-panel" aria-label="Voice controls">
+            <div class="select-grid">
+              <label>
+                <span class="label-heading">
+                  Model
+                  <span id="cache-status" class="cache-pill">Checking cache</span>
+                </span>
+                <select id="model-select"></select>
+              </label>
+              <label>
+                Voice
+                <select id="voice-select"></select>
+              </label>
+              <label>
+                Pitch
+                <select id="pitch-select">
+                  <option value="-20">-20%</option>
+                  <option value="-15">-15%</option>
+                  <option value="-10">-10%</option>
+                  <option value="-5">-5%</option>
+                  <option value="0" selected>0%</option>
+                  <option value="5">+5%</option>
+                  <option value="10">+10%</option>
+                  <option value="15">+15%</option>
+                  <option value="20">+20%</option>
+                </select>
+              </label>
+            </div>
+
+            <section class="status-strip" aria-live="polite">
+              <span id="status">Idle</span>
+              <span id="progress-label">0%</span>
+              <span class="progress-meter" aria-hidden="true">
+                <span id="progress-fill"></span>
+              </span>
+            </section>
+
+            <label class="editor-label">
+              Use the sample text or enter your own text in English
+              <textarea id="text-input">Thank you for trying KittenTTS in this local browser demo. This voice is generated on your device, so your text stays private after the model files are available. You can change the voice, adjust the speed, and play the sample whenever you are ready.</textarea>
+            </label>
+
+            <div class="playback-row">
+              <section class="speed-control">
+                <span>Adjust speed</span>
+                <div class="slider-line">
+                  <strong>0.5x</strong>
+                  <input id="speed-input" type="range" min="0.5" max="2" step="0.05" value="1" />
+                  <strong>2.0x</strong>
+                </div>
+                <output id="speed-value">1.00x</output>
+              </section>
+
+              <section class="action-control">
+                <div class="action-buttons">
+                  <div class="play-box">
+                    <span>Play voice</span>
+                    <button id="speak-button" type="button" aria-label="Play voice">
+                      <span class="play-icon" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <div class="download-control" aria-label="Download audio">
+                    <span>Download</span>
+                    <div class="format-toggle">
+                      <label>
+                        <input type="radio" name="download-format" value="wav" checked />
+                        WAV
+                      </label>
+                      <label>
+                        <input type="radio" name="download-format" value="mp3" />
+                        MP3
+                      </label>
+                    </div>
+                    <button id="download-button" type="button">Save</button>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <section id="busy-panel" class="busy-panel" role="status" aria-live="polite">
+              <span class="spinner" aria-hidden="true"></span>
+              <span id="busy-label">Working</span>
+            </section>
+
+            <p class="demo-disclaimer">
+              This system is for demonstration purposes only and is not intended
+              to process sensitive or personal data. No text is sent to a TTS
+              service after local model assets are available.
+            </p>
+
+            <section id="result-panel" class="result-panel">
+              <div>
+                <strong id="duration-value">0.00s</strong>
+                <span>Duration</span>
+              </div>
+              <div>
+                <strong id="sample-rate-value">0 Hz</strong>
+                <span>Sample rate</span>
+              </div>
+              <div>
+                <strong id="word-timings-value">0</strong>
+                <span>Word timings</span>
+              </div>
+            </section>
+
+            <div class="utility-actions" hidden>
+              <button id="initialize-button" type="button">Load model</button>
+              <button id="generate-button" type="button" disabled>Generate only</button>
+              <button id="stop-button" type="button" disabled>Stop</button>
+            </div>
+
+          </section>
+
+        </div>
+      </section>
+
+    </main>
+
+    <script defer src="./assets/kittentts-web.js"></script>
+    <script defer src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+src/
+vendor/
+scripts/
+tests/
+tsconfig.json
+*.tgz
+examples/*/node_modules/
+examples/*/dist/
+examples/*/public/onnxruntime/
+examples/*/*.tsbuildinfo
