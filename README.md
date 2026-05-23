@@ -19,16 +19,6 @@
   <img src="https://img.shields.io/badge/Web-Browser%20%7C%20Node.js-3178C6" alt="Browser and Node.js">
 </p>
 
-> Developer preview. APIs may change between releases.
-
-> Browser apps use ONNX Runtime Web and browser storage. Node.js apps use ONNX
-> Runtime Web with filesystem storage by default.
-
-> Browser ONNX Runtime wasm assets are loaded from the matching ONNX Runtime Web
-> CDN by default. For production apps that need CDN independence or stricter
-> supply-chain controls, self-host those ONNX Runtime assets and set
-> `ortWasmPath`.
-
 ## See It In Action
 
 <p align="center">
