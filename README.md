@@ -1,7 +1,7 @@
 # KittenTTS Web
 
 <p align="center">
-  <img src="assets/banner.png" alt="KittenTTS Web" width="90%" />
+  <img src="assets/banner.webp" alt="KittenTTS Web" width="1200" />
 </p>
 
 <p align="center">
